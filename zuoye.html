@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html ng-app="myApp">
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+</head>
+<body class="ng-cloak">
+<div ng-controller="myCtrl">
+    <form action="">
+        <textarea ng-model="status" style="resize:none;width: 500px;height: 300px;" ng-change="checkText()"></textarea>  <br>
+        <button ng-disabled="disabled">点击</button>
+    </form>
+</div>
+<script src="angular.min.js"></script>
+<script>
+    var app=angular.module("myApp",[]);
+    app.controller("myCtrl",["$scope",function ($scope) {
+        $scope.status='';
+        $scope.disabled=false;
+        $scope.checkText=function(){
+            if($scope.status.length>60){
+                $scope.disabled=true
+            }else{
+                $scope.disabled=false
+            }
+        }
+    }])
+</script>
+</body>
+</html>
